@@ -6,7 +6,7 @@ class Subdivision extends \AwkwardIdeas\HexorxCountriesBundler\Models\BaseModel
 {
     protected $fillable = ["abbreviation", "unofficial_names","translations","name","geo","comments"];
 
-    protected $toArrayExclude = ["unofficial_names","translations"];
+    protected $toArrayExclude = ["unofficial_names","translations","comments"];
 
     public function setGeoAttribute($value){
         if(is_array($value)){

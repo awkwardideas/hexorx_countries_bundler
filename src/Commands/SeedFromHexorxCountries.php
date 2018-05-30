@@ -164,7 +164,7 @@ class SeedFromHexorxCountries extends Command
         $destinationPath = $this->path_to_hexorx_data."/all.json";
 
         $destination = fopen($destinationPath, 'wa+');
-        fwrite($destination, json_encode($countries));
+        fwrite($destination, json_encode($simpleArrayData));
         fclose($destination);
     }
 }

@@ -21,11 +21,15 @@ class Country extends BaseModel {
         if(is_array($value)){
             $subdivisionSet = [];
             if(is_array($value[array_keys($value)[0]])){
-                foreach($value as $subdivision){
-                    $subdivisionSet[] = new Subdivision($subdivision);
+                foreach($value as $abbreviation=>$subdivision){
+                    $subdivision = new Subdivision($subdivision);
+                    $subdivision->abbreviation = $abbreviation;
+                    $subdivisionSet[] = $subdivision;
                 }
             }else{
-                $subdivisionSet[] = new Subdivision($value);
+                $subdivision = new Subdivision($value);
+                $subdivision->abbreviation = array_keys($value)[0];
+                $subdivisionSet[] = $subdivision;
             }
             $value = $subdivisionSet;
         }

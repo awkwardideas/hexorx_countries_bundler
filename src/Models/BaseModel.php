@@ -30,10 +30,15 @@ abstract class BaseModel
         foreach($this->attributes as $key=>$value){
             if(!in_array($key, $this->toArrayExclude)){
                 if(is_array($value)){
-                    if(is_object($value[array_keys($value)[0]])){
+                    if(count($value) > 0){
                         $valueArray = [];
                         foreach($value as $object){
-                            $valueArray[] = $object->toSimpleArray();
+                            if(is_object($object)){
+                                $valueArray[] = $object->toSimpleArray();
+                            }else{
+                                $valueArray[] = $object;
+                            }
+
                         }
                         $value = $valueArray;
                     }
