@@ -10,6 +10,7 @@ class SeedFromHexorxCountries extends Command
 {
     protected $hexorx_countries_url = "https://api.github.com/repos/hexorx/countries";
     protected $path_to_hexorx_data =__DIR__.'/../../data/hexorxCountries';
+    protected $path_to_components_data =__DIR__.'/../resources/assets/js/components/data';
     protected $request_options = [
         'http' => [
             'method' => 'GET',
@@ -161,7 +162,13 @@ class SeedFromHexorxCountries extends Command
             $simpleArrayData[] = $country->toSimpleArray();
         }
 
-        $destinationPath = $this->path_to_hexorx_data."/all.json";
+        if(!file_exists($this->path_to_components_data)){
+            if(!@mkdir($this->path_to_components_data, 0700, true) && !is_dir($this->path_to_components_data)){
+                throw new Exception("Directory Creation Failed");
+            }
+        }
+
+        $destinationPath = $this->path_to_components_data."/country_region.json";
 
         $destination = fopen($destinationPath, 'wa+');
         fwrite($destination, json_encode($simpleArrayData));

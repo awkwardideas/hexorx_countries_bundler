@@ -45,4 +45,12 @@ class HexorxSeedTest extends PHPUnit\Framework\TestCase
         $seeder = new seedFromHexorxCountries();
         $seeder->createJSONWithCountriesAndTheirDistricts();
     }
+
+    public function test_culture(){
+        //print_r(Locale::getDisplayScript(Locale::getDefault()));
+        $formatter = new IntlDateFormatter('en-US',
+            IntlDateFormatter::SHORT, IntlDateFormatter::SHORT);
+        print_r($formatter);
+        //print_r(new CultureInfo('en-US'));
+    }
 }

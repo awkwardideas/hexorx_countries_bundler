@@ -7,7 +7,8 @@ class Country extends BaseModel {
 
     protected $fillable = ["continent", "abbreviation","alpha2","alpha3","country_code","international_prefix","ioc","gec","name","national_destination_code_lengths","national_number_lengths","national_prefix","number","region","subregion","world_region","un_locode","nationality","postal_code","unofficial_names","languages_official","languages_spoken","geo","currency_code","start_of_week","subdivisions"];
 
-    protected $toArrayExclude = ["unofficial_names", "ioc","gec","alpha2","alpha3"];
+    //protected $toArrayExclude = ["unofficial_names", "ioc","gec","alpha2","alpha3"];
+    protected $toArrayExclude = ["continent","alpha2","alpha3","country_code","international_prefix","ioc","gec","national_destination_code_lengths","national_number_lengths","national_prefix","number","region","subregion","world_region","un_locode","nationality","postal_code","unofficial_names","languages_official","languages_spoken","geo","currency_code","start_of_week"];
 
     public function setGeoAttribute($value){
         if(is_array($value)){
